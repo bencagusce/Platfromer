@@ -1,0 +1,25 @@
+The game needs to contain:
+- [ ] Player character (waloogi)
+  - [ ] Can be moved by player
+  - [ ] Left, Right and Jump
+  - [ ] Sprite is oriented based on movement direction
+  - [ ] Is affected by gravity
+  - [ ] Can not move through Platforms
+- [ ] Key
+  - [ ] Can be picked up by the player character
+  - [ ] Opens the door when picked up
+- [ ] Door
+  - [ ] When open: takes the player to the next level
+  - [ ] When closed: does nothing
+- [ ] Levels
+  - [ ] At least 2 levels
+  - [ ] Loaded from text-files that determines placement of
+  - [ ] Player, platforms, keys and doors
+- [ ] Graphics
+  - [ ] All of the above elements have a functional graphical representation
+  - [ ] Tilesets are used
+  - [ ] Collision accounts for the graphical representation
+- [ ] At least one of the Bonus Features:
+  - [ ] Add a Coin-entity and show the number of coins picked up as a text somewhere on the screen.
+  - [ ] Play a walk-animation when the player moves by toggling between the first and second tile in characters.png
+  - [ ] Add a special platform entity that breaks when the hero hits it from underneath (without changing anything in the hero class)
