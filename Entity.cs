@@ -28,12 +28,12 @@ public class Entity
         sprite.Texture = scene.LoadTexture(textureName);
     }
 
-    public void Update(Scene scene, float deltaTime)
+    public virtual void Update(Scene scene, float deltaTime)
     {
         
     }
 
-    public void Render(RenderTarget target)
+    public virtual void Render(RenderTarget target)
     {
         target.Draw(sprite);
     }
