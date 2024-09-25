@@ -29,6 +29,8 @@ class Program
                 });
             }
             
+            scene.Spawn(new Hero());
+            
             window.SetView(new View(
                 new Vector2f(200, 150),
                 new Vector2f(400, 300)
