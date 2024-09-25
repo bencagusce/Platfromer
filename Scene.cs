@@ -69,6 +69,9 @@ public class Scene
 
     public void RenderAll(RenderTarget target)
     {
-        
+        foreach (var entity in entities)
+        {
+            entity.Render(target);
+        }
     }
 }
