@@ -44,7 +44,6 @@ class Program
                 window.Clear();
                 // TODO: Drawing
                 scene.RenderAll(window);
-                
                 window.Display();
             }
         }
