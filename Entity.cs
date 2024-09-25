@@ -28,7 +28,7 @@ public class Entity
         sprite.Texture = scene.LoadTexture(textureName);
     }
 
-    public void Update(Scene scene, float deltaTime)
+    public virtual void Update(Scene scene, float deltaTime)
     {
         
     }
