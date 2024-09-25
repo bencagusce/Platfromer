@@ -5,19 +5,25 @@ using SFML.System;
 namespace Platformer;
 public class Entity
 {
-    private string textureName;
-    protected Sprite sprite;
+    private readonly string textureName;
+    protected readonly Sprite sprite;
     public bool Dead;
 
     protected Entity(string textureName)
     {
-        
+        this.textureName = textureName;
+        sprite = new Sprite();
     }
 
-    public Vector2f Position;
-    public readonly FloatRect Bounds;
+    public Vector2f Position
+    {
+        get => sprite.Position;
+        set => sprite.Position = value;
+    }
 
-    public void Create(Scene scene)
+    public virtual FloatRect Bounds => sprite.GetGlobalBounds();
+
+    public virtual void Create(Scene scene)
     {
         
     }
