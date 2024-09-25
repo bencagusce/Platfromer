@@ -4,10 +4,10 @@ using SFML.Window;
 
 namespace Platformer;
 
-class platformer
+class Program
 {
 
-    static void main()
+    static void Main()
     {
         using (var window = new RenderWindow(new VideoMode(800, 600), "platformer"))
         {
@@ -16,6 +16,8 @@ class platformer
             // TODO: Initialize
             Clock clock = new Clock();
             Scene scene = new Scene();
+            
+            scene.Spawn(new Background());
 
             scene.Spawn(new Platform {
                 Position = new Vector2f(54, 270)});
