@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SFML.Graphics;
+using SFML.System;
 
 namespace Platformer;
 public class Scene
@@ -8,6 +9,27 @@ public class Scene
     private readonly Dictionary<string, Texture> textures;
     private readonly List<Entity> entities;
 
+    public bool TryMove(Entity entity, Vector2f movement)
+    {
+        entity.Position += movement;
+        bool collided = false;
+        for (int i = 0; i < entities.Count; i++)
+        {
+            Entity other = entities[i];
+            if (!other.Solid) continue;
+            if (other == entity) continue;
+            FloatRect boundsA = entity.Bounds;
+            FloatRect boundsB = other.Bounds;
+            if (Collision.RectangleRectangle(boundsA, boundsB, out Collision.Hit hit))
+            {
+                entity.Position += hit.Normal * hit.Overlap;
+                i = -1; //check everything onve again
+                collided = true;
+                //Todo: resolve collision using "hit variable (31)
+            }
+        }
+        return collided;
+    }
     public Scene()
     {
         textures = new Dictionary<string, Texture>();

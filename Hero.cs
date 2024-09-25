@@ -24,7 +24,7 @@ class Hero : Entity
 
         if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
         {
-            Position += new Vector2f(speed * deltaTime, 0);
+            scene.TryMove(this, new Vector2f(speed * deltaTime, 0));
             faceRight = true;
         }
     }

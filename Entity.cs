@@ -8,6 +8,7 @@ public class Entity
     private readonly string textureName;
     protected readonly Sprite sprite;
     public bool Dead;
+    public virtual bool Solid => false;
 
     protected Entity(string textureName)
     {

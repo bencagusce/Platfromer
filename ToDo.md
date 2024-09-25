@@ -1,3 +1,4 @@
+## continue at step 33
 The game needs to contain:
 - [ ] Player character (waloogi)
   - [ ] Can be moved by player
