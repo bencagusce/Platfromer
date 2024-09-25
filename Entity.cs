@@ -1,6 +1,6 @@
 namespace Platformer;
 
-class Entity
+public class Entity
 {
 
 }
