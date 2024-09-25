@@ -25,7 +25,7 @@ public class Entity
 
     public virtual void Create(Scene scene)
     {
-        
+        sprite.Texture = scene.LoadTexture(textureName);
     }
 
     public void Update(Scene scene, float deltaTime)
@@ -35,7 +35,7 @@ public class Entity
 
     public void Render(RenderTarget target)
     {
-        
+        target.Draw(sprite);
     }
 }
 
