@@ -1,26 +1,38 @@
-namespace Platformer;
 
+using SFML.Graphics;
+using SFML.System;
+
+namespace Platformer;
 public class Entity
 {
+    private string textureName;
+    protected Sprite sprite;
+    public bool Dead;
 
-}
-class Platform : Entity
-{
+    protected Entity(string textureName)
+    {
+        
+    }
 
-}
-class Background : Entity
-{
+    public Vector2f Position;
+    public readonly FloatRect Bounds;
 
-}
-class Key : Entity
-{
+    public void Create(Scene scene)
+    {
+        
+    }
 
-}
-class Door : Entity
-{
+    public void Update(Scene scene, float deltaTime)
+    {
+        
+    }
 
+    public void Render(RenderTarget target)
+    {
+        
+    }
 }
-class Hero : Entity
-{
 
-}
+
+
+
