@@ -88,11 +88,9 @@ public class Scene
         
         // Load scene from file
         foreach (var line in File.ReadLines(file, Encoding.UTF8)) {
-            // steps 44-45 was skipped
-            // string parsed = line.Trim();
-
+            
             string[] words = line.Split(" ");
-
+            
             switch (words[0])
             {
                 case "w":
