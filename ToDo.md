@@ -27,5 +27,6 @@ The game needs to contain:
   - [ ] Add a special platform entity that breaks when the hero hits it from underneath (without changing anything in the hero class)
   - [ ] connect textures
   - [x] Collision accounts for the graphical representation (bounds for key and coin)
-  - [ ] add more coins
+  - [x] add more coins
   - [x] fix sprite 2 for hero (floating)
+  - [ ] fix coin respawn
