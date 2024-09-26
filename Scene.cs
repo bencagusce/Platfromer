@@ -10,7 +10,7 @@ public class Scene
 {
     private readonly Dictionary<string, Texture> textures;
     private readonly List<Entity> entities;
-    private string nextScene;
+    private string? nextScene;
     private string currentScene;
 
     public Scene()
@@ -61,7 +61,6 @@ public class Scene
 
     public void Load(string newScene){
         nextScene = newScene;
-        HandleSceneChange();
     }
 
     public bool FindByType<T>(out T found) where T : Entity
@@ -141,6 +140,7 @@ public class Scene
 
     public void UpdateAll(float deltaTime)
     {
+        HandleSceneChange();
         for (int i = entities.Count - 1; i >= 0; i--)
         {
             Entity entity = entities[i];

@@ -54,12 +54,16 @@ class Hero : Entity
         else isUpPressed = false;
         if (verticalSpeed > 500.0f) verticalSpeed = 500.0f;
         
-        Vector2f difference = new Vector2f (Position.X - Program.SCREEN_ORIGIN_X, Position.Y - Program.SCREEN_ORIGIN_Y);
-        float absDiffX = MathF.Abs(difference.X);
-        float absDiffY = MathF.Abs(difference.Y);
+        if (!Collision.RectangleRectangle(Bounds,new FloatRect(0,0,Program.SCREEN_W,Program.SCREEN_H), out var _))
+        {
+            scene.Reload();
+        }
+        // Vector2f difference = new Vector2f (Position.X - Program.SCREEN_ORIGIN_X, Position.Y - Program.SCREEN_ORIGIN_Y);
+        // float absDiffX = MathF.Abs(difference.X);
+        // float absDiffY = MathF.Abs(difference.Y);
         // if (absDiffX > (Program.SCREEN_ORIGIN_X + Position.X) || 
         //     absDiffY > (Program.SCREEN_ORIGIN_Y + Position.Y)) scene.Reload();
-        Console.WriteLine(absDiffX > (Program.SCREEN_ORIGIN_X + Position.X) || absDiffY > (Program.SCREEN_ORIGIN_Y + Position.Y));
+        // Console.WriteLine(absDiffX > (Program.SCREEN_ORIGIN_X + Position.X) || absDiffY > (Program.SCREEN_ORIGIN_Y + Position.Y));
     }
 
     public override void Render(RenderTarget target)
