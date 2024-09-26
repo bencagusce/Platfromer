@@ -15,17 +15,17 @@ The game needs to contain:
 - [x] Levels
   - [x] At least 2 levels
   - [x] Loaded from text-files that determines placement of Player, platforms, keys and doors
-- [ ] Graphics
+- [x] Graphics
   - [x] All of the above elements have a functional graphical representation
   - [x] Tilesets are used
-  - [ ] Collision accounts for the graphical representation
+  - [x] Collision accounts for the graphical representation
 - [ ] At least one of the Bonus Features:
   - [x] Add a Coin-entity and show the number of coins picked up as a text somewhere on the screen.
   - [x] Play a walk-animation when the player moves by toggling between the first and second tile in characters.png
   - [ ] Add a special platform entity that breaks when the hero hits it from underneath (without changing anything in the hero class)
 
   - [ ] Add a special platform entity that breaks when the hero hits it from underneath (without changing anything in the hero class)
-  - [ ] connect textures
+  - [x] connect textures
   - [x] Collision accounts for the graphical representation (bounds for key and coin)
   - [x] add more coins
   - [x] fix sprite 2 for hero (floating)
