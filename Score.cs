@@ -6,6 +6,7 @@ namespace Platformer;
 class Score : Entity
 {
     public static int score = 0;
+    public static int checkPointScore = 0;
     public Score() : base("tileset")
     {
         sprite.TextureRect = new IntRect(18 * score,144,18,18);

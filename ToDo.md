@@ -29,4 +29,4 @@ The game needs to contain:
   - [x] Collision accounts for the graphical representation (bounds for key and coin)
   - [x] add more coins
   - [x] fix sprite 2 for hero (floating)
-  - [ ] fix coin respawn
+  - [x] fix coin respawn

@@ -79,6 +79,8 @@ public class Scene
     private void HandleSceneChange(){
         if (nextScene == null) return;
         if (nextScene == "level0") Score.score = 0;
+        if (nextScene == currentScene) Score.score = Score.checkPointScore;
+        else Score.checkPointScore = Score.score;
         entities.Clear();
         Spawn(new Background());
 
