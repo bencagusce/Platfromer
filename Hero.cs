@@ -3,9 +3,14 @@ using SFML.System;
 using SFML.Window;
 
 namespace Platformer;
-
 class Hero : Entity
 {
+    public const float WALKSPEED = 100.0f;
+    public const float JUMPFORCE = 250.0f;
+    public const float GRAVITYFORCE = 400.0f;
+    private float verticalSpeed;
+    private bool isGrounded;
+    private bool isUpPressed;
     private float speed = 100.0f;
     private bool faceRight = false;
     public Hero() : base("characters")
@@ -16,9 +21,10 @@ class Hero : Entity
 
     public override void Update(Scene scene, float deltaTime)
     {
+        verticalSpeed += GRAVITYFORCE * deltaTime;
         if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
         {
-            Position -= new Vector2f(speed * deltaTime, 0);
+            scene.TryMove(this, new Vector2f(-speed * deltaTime, 0));
             faceRight = false;
         }
 
@@ -27,6 +33,26 @@ class Hero : Entity
             scene.TryMove(this, new Vector2f(speed * deltaTime, 0));
             faceRight = true;
         }
+        if (Keyboard.IsKeyPressed(Keyboard.Key.Up))
+        {
+            if (isGrounded && !isUpPressed) {
+                verticalSpeed = -JUMPFORCE;
+                isUpPressed = true;
+            }
+            isGrounded = false;
+            Vector2f velocity = new Vector2f(0, verticalSpeed * deltaTime);
+            if (scene.TryMove(this, velocity))
+            {
+                if (verticalSpeed > 0.0f)
+                {
+                    isGrounded = true; //hero is standing on something
+                }
+                verticalSpeed = 0.0f;
+            }
+        } else {
+            isUpPressed = false;
+        }
+        if (verticalSpeed > 500.0f) verticalSpeed = 500.0f;
     }
 
     public override void Render(RenderTarget target)

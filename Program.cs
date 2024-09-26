@@ -16,18 +16,19 @@ class Program
             // TODO: Initialize
             Clock clock = new Clock();
             Scene scene = new Scene();
+            scene.Load("level0");
             
             scene.Spawn(new Background());
 
             scene.Spawn(new Platform {
                 Position = new Vector2f(54, 270)});
 
-            for (int i = 0; i < 10; i++)
-            {
-                scene.Spawn(new Platform {
-                    Position = new Vector2f(18 + i * 18, 288)
-                });
-            }
+            // for (int i = 0; i < 10; i++)
+            // {
+            //     scene.Spawn(new Platform {
+            //         Position = new Vector2f(18 + i * 18, 288)
+            //     });
+            // }
             
             scene.Spawn(new Hero());
             
@@ -40,6 +41,7 @@ class Program
             {
                 window.DispatchEvents();
                 float deltaTime = clock.Restart().AsSeconds();
+                if (deltaTime > 0.1f) deltaTime = 0.1f;
                 // TODO: Updates
                 scene.UpdateAll(deltaTime);
                 
