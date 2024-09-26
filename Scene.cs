@@ -13,6 +13,26 @@ public class Scene
     private string nextScene;
     private string currentScene;
 
+    public Scene()
+    {
+        textures = new Dictionary<string, Texture>();
+        entities = new List<Entity>();
+    }
+
+    public void Spawn(Entity entity)
+    {
+        entities.Add(entity);
+        entity.Create(this);
+    }
+
+    public Texture LoadTexture(string name)
+    {
+        if (textures.TryGetValue(name, out Texture found)) return found;
+        string fileName = $"assets/{name}.png";
+        Texture texture = new Texture(fileName);
+        textures.Add(name, texture);
+        return texture;
+    }
     public bool TryMove(Entity entity, Vector2f movement)
     {
         entity.Position += movement;
@@ -34,26 +54,6 @@ public class Scene
         }
         return collided;
     }
-    public Scene()
-    {
-        textures = new Dictionary<string, Texture>();
-        entities = new List<Entity>();
-    }
-
-    public void Spawn(Entity entity)
-    {
-        entities.Add(entity);
-        entity.Create(this);
-    }
-
-    public Texture LoadTexture(string name)
-    {
-        if (textures.TryGetValue(name, out Texture found)) return found;
-        string fileName = $"assets/{name}.png";
-        Texture texture = new Texture(fileName);
-        textures.Add(name, texture);
-        return texture;
-    }
 
     public void Reload(){
         nextScene = currentScene;
@@ -64,6 +64,19 @@ public class Scene
         HandleSceneChange();
     }
 
+    public bool FindByType<T>(out T found) where T : Entity
+    {
+        foreach (var entity in entities)
+        {
+            if (!entity.Dead && entity is T typed)
+            {
+                found = typed;
+                return true;
+            }
+        }
+        found = default(T);
+        return false;
+    }
     private void HandleSceneChange(){
         if (nextScene == null) return;
         entities.Clear();
@@ -98,7 +111,7 @@ public class Scene
                     int posY;
                     if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
                     if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
-                    Spawn(new Door { Position = new Vector2f(posX, posY) });
+                    Spawn(new Door { Position = new Vector2f(posX, posY), NextRoom = words[3]});
                     break;
                 }
                 case "k":
