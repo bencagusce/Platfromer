@@ -72,6 +72,8 @@ public class Scene
         string file = $"assets/{nextScene}.txt";
         Console.WriteLine($"Loading scene '{file}'");
 
+        Spawn(new Background());
+        
         // Load scene from file
         foreach (var line in File.ReadLines(file, Encoding.UTF8)) {
             // steps 44-45 was skipped
@@ -85,17 +87,38 @@ public class Scene
                 {
                     int posX;
                     int posY;
-                    if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse tile coordinates in 'assets/{file}.txt'");
-                    if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse tile coordinates in 'assets/{file}.txt'");
+                    if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
                     Spawn(new Platform { Position = new Vector2f(posX, posY) });
-                    Console.WriteLine($"Spawned platform at {posX},{posY}");
                     break;
                 }
-                case "d": break;
-                case "k": break;
-                case "h": break;
-
-                default: break;
+                case "d":
+                {
+                    int posX;
+                    int posY;
+                    if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    Spawn(new Door { Position = new Vector2f(posX, posY) });
+                    break;
+                }
+                case "k":
+                {
+                    int posX;
+                    int posY;
+                    if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    Spawn(new Key { Position = new Vector2f(posX, posY) });
+                    break;
+                }
+                case "h":
+                {
+                    int posX;
+                    int posY;
+                    if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    Spawn(new Hero { Position = new Vector2f(posX, posY) });
+                    break;
+                }
             }
         }
 

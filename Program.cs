@@ -18,20 +18,6 @@ class Program
             Scene scene = new Scene();
             scene.Load("level0");
             
-            scene.Spawn(new Background());
-
-            scene.Spawn(new Platform {
-                Position = new Vector2f(54, 270)});
-
-            // for (int i = 0; i < 10; i++)
-            // {
-            //     scene.Spawn(new Platform {
-            //         Position = new Vector2f(18 + i * 18, 288)
-            //     });
-            // }
-            
-            scene.Spawn(new Hero());
-            
             window.SetView(new View(
                 new Vector2f(200, 150),
                 new Vector2f(400, 300)
