@@ -132,6 +132,16 @@ public class Scene
             }
         }
 
+        // foreach (Platform platform in entities.Where(a => a is Platform))
+        // {
+        //     platform.ConnectPlatforms(entities.Where(a => a is Platform).ToList());
+        // }
+
+        foreach (Platform platform in entities.OfType<Platform>())
+        {
+            platform.ConnectPlatforms(entities.OfType<Platform>().ToList());
+        }
+        
         currentScene = nextScene;
         nextScene = null;
     }
