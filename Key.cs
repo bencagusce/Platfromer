@@ -25,4 +25,15 @@ class Key : Entity
             }
         }
     }
+    public override FloatRect Bounds
+    { get 
+        {
+            var bounds = base.Bounds;
+            bounds.Left += 0;
+            bounds.Width += 0;
+            bounds.Top += 1;
+            bounds.Height -= 3;
+            return bounds;
+        }
+    }
 }

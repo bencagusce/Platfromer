@@ -78,13 +78,14 @@ public class Scene
     }
     private void HandleSceneChange(){
         if (nextScene == null) return;
+        if (nextScene == "level0") Score.score = 0;
+        if (nextScene == currentScene) Score.score = Score.checkPointScore;
+        else Score.checkPointScore = Score.score;
         entities.Clear();
         Spawn(new Background());
 
         string file = $"assets/{nextScene}.txt";
         Console.WriteLine($"Loading scene '{file}'");
-
-        Spawn(new Background());
         
         // Load scene from file
         foreach (var line in File.ReadLines(file, Encoding.UTF8)) {
@@ -129,8 +130,19 @@ public class Scene
                     Spawn(new Hero { Position = new Vector2f(posX, posY) });
                     break;
                 }
+                case "c":
+                {
+                    int posX;
+                    int posY;
+                    if (!int.TryParse(words[1], out posX)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    if (!int.TryParse(words[2], out posY)) throw new Exception($"Failed to parse coordinates in 'assets/{file}.txt'");
+                    Spawn(new Coin { Position = new Vector2f(posX, posY) });
+                    break;
+                }
             }
         }
+        Spawn(new Score { Position = new Vector2f(360, 18)});
+        Spawn(new Coin { Position = new Vector2f(378, 18)});
 
         // foreach (Platform platform in entities.Where(a => a is Platform))
         // {

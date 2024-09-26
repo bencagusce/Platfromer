@@ -5,6 +5,10 @@ k 216 72
 # Hero
 h 54 270
 
+# Coins
+c 180 180
+c 306 108
+
 # Platforms
 w 18 18
 w 18 36
