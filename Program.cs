@@ -6,6 +6,10 @@ namespace Platformer;
 
 class Program
 {
+    public const int SCREEN_W = 800;
+    public const int SCREEN_H = 600;
+    public const int SCREEN_ORIGIN_X = SCREEN_W / 2;
+    public const int SCREEN_ORIGIN_Y = SCREEN_H / 2;
 
     static void Main()
     {
@@ -16,6 +20,7 @@ class Program
             // TODO: Initialize
             Clock clock = new Clock();
             Scene scene = new Scene();
+            scene.Spawn(new Background());
             scene.Load("level0");
             
             window.SetView(new View(

@@ -39,20 +39,26 @@ class Hero : Entity
                 verticalSpeed = -JUMPFORCE;
                 isUpPressed = true;
             }
-            isGrounded = false;
-            Vector2f velocity = new Vector2f(0, verticalSpeed * deltaTime);
-            if (scene.TryMove(this, velocity))
-            {
-                if (verticalSpeed > 0.0f)
-                {
-                    isGrounded = true; //hero is standing on something
-                }
-                verticalSpeed = 0.0f;
-            }
-        } else {
-            isUpPressed = false;
         }
+        isGrounded = false;
+        Vector2f velocity = new Vector2f(0, verticalSpeed * deltaTime);
+        if (scene.TryMove(this, velocity))
+        {
+            if (verticalSpeed > 0.0f)
+            {
+                isGrounded = true; //hero is standing on something
+            }
+            verticalSpeed = 0.0f;
+        }
+        else isUpPressed = false;
+        
         if (verticalSpeed > 500.0f) verticalSpeed = 500.0f;
+        
+        Vector2f difference = new Vector2f (Position.X - Program.SCREEN_ORIGIN_X, Position.Y - Program.SCREEN_ORIGIN_Y);
+        float absDiffX = MathF.Abs(difference.X);
+        float absDiffY = MathF.Abs(difference.Y);
+        if (absDiffX > (Program.SCREEN_ORIGIN_X + Position.X) || 
+            absDiffY > (Program.SCREEN_ORIGIN_Y + Position.Y)) scene.Reload();
     }
 
     public override void Render(RenderTarget target)
