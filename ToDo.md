@@ -1,26 +1,31 @@
 ## continue at step 33
 The game needs to contain:
-- [ ] Player character (waloogi)
-  - [ ] Can be moved by player
-  - [ ] Left, Right and Jump
-  - [ ] Sprite is oriented based on movement direction
-  - [ ] Is affected by gravity
-  - [ ] Can not move through Platforms
-- [ ] Key
-  - [ ] Can be picked up by the player character
-  - [ ] Opens the door when picked up
-- [ ] Door
-  - [ ] When open: takes the player to the next level
-  - [ ] When closed: does nothing
-- [ ] Levels
-  - [ ] At least 2 levels
-  - [ ] Loaded from text-files that determines placement of
-  - [ ] Player, platforms, keys and doors
+- [x] Player character
+  - [x] Can be moved by player
+  - [x] Left, Right and Jump
+  - [x] Sprite is oriented based on movement direction
+  - [x] Is affected by gravity
+  - [x] Can not move through Platforms
+- [x] Key
+  - [x] Can be picked up by the player character
+  - [x] Opens the door when picked up
+- [x] Door
+  - [x] When open: takes the player to the next level
+  - [x] When closed: does nothing
+- [x] Levels
+  - [x] At least 2 levels
+  - [x] Loaded from text-files that determines placement of Player, platforms, keys and doors
 - [ ] Graphics
-  - [ ] All of the above elements have a functional graphical representation
-  - [ ] Tilesets are used
+  - [x] All of the above elements have a functional graphical representation
+  - [x] Tilesets are used
   - [ ] Collision accounts for the graphical representation
 - [ ] At least one of the Bonus Features:
-  - [ ] Add a Coin-entity and show the number of coins picked up as a text somewhere on the screen.
-  - [ ] Play a walk-animation when the player moves by toggling between the first and second tile in characters.png
+  - [x] Add a Coin-entity and show the number of coins picked up as a text somewhere on the screen.
+  - [x] Play a walk-animation when the player moves by toggling between the first and second tile in characters.png
   - [ ] Add a special platform entity that breaks when the hero hits it from underneath (without changing anything in the hero class)
+
+  - [ ] Add a special platform entity that breaks when the hero hits it from underneath (without changing anything in the hero class)
+  - [ ] connect textures
+  - [x] Collision accounts for the graphical representation (bounds for key and coin)
+  - [ ] add more coins
+  - [x] fix sprite 2 for hero (floating)

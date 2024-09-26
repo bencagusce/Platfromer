@@ -8,8 +8,12 @@ class Hero : Entity
     public const float WALKSPEED = 100.0f;
     public const float JUMPFORCE = 250.0f;
     public const float GRAVITYFORCE = 400.0f;
+    private float animationBuffer = 0;
+    private const float KEYFRAME_THRESHOLD = 0.25f;
+    private bool keyframe = false;
     private float verticalSpeed;
     private bool isGrounded;
+    private bool landed;
     private bool isUpPressed;
     private float speed = 100.0f;
     private bool faceRight = false;
@@ -22,6 +26,19 @@ class Hero : Entity
     public override void Update(Scene scene, float deltaTime)
     {
         verticalSpeed += GRAVITYFORCE * deltaTime;
+        animationBuffer += deltaTime;
+        if ((animationBuffer > KEYFRAME_THRESHOLD) && 
+            (isGrounded) &&
+            (
+                (Keyboard.IsKeyPressed(Keyboard.Key.Left)) || 
+                (Keyboard.IsKeyPressed(Keyboard.Key.Right))
+            )) 
+        {
+            animationBuffer = 0;
+            keyframe = !keyframe;
+            if (keyframe) sprite.TextureRect = new IntRect(0, 0, 24, 24);
+            else sprite.TextureRect = new IntRect(24, 0, 24, 24);
+        }
         if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
         {
             scene.TryMove(this, new Vector2f(-speed * deltaTime, 0));
@@ -37,6 +54,8 @@ class Hero : Entity
         {
             if (isGrounded && !isUpPressed) {
                 verticalSpeed = -JUMPFORCE;
+                sprite.TextureRect = new IntRect(24, 0, 24, 24);
+                landed = true;
                 isUpPressed = true;
             }
         }
@@ -48,6 +67,11 @@ class Hero : Entity
             {
                 isGrounded = true; //hero is standing on something
                 verticalSpeed = 0.0f;
+                if (landed) 
+                {
+                    sprite.TextureRect = new IntRect(0, 0, 24, 24);
+                    landed = false;
+                }
             }
             else verticalSpeed = -0.5f * verticalSpeed;
         }
