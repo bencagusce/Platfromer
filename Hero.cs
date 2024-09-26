@@ -47,11 +47,11 @@ class Hero : Entity
             if (verticalSpeed > 0.0f)
             {
                 isGrounded = true; //hero is standing on something
+                verticalSpeed = 0.0f;
             }
-            verticalSpeed = 0.0f;
+            else verticalSpeed = -0.5f * verticalSpeed;
         }
         else isUpPressed = false;
-        
         if (verticalSpeed > 500.0f) verticalSpeed = 500.0f;
         
         Vector2f difference = new Vector2f (Position.X - Program.SCREEN_ORIGIN_X, Position.Y - Program.SCREEN_ORIGIN_Y);
@@ -65,5 +65,16 @@ class Hero : Entity
     {
         sprite.Scale = new Vector2f(faceRight ? -1 : 1, 1);
         base.Render(target);
+    }
+    public override FloatRect Bounds
+    { get 
+        {
+            var bounds = base.Bounds;
+            bounds.Left += 3;
+            bounds.Width -= 6;
+            bounds.Top += 3;
+            bounds.Height -= 3;
+            return bounds;
+        }
     }
 }
