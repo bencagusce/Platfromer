@@ -16,6 +16,7 @@ class Platform : Entity
 {
     public override bool Solid => true;
     
+    // Texture coordinates for each possible combination of connected tiles
     private static Dictionary<byte, Vector2i> textures = new Dictionary<byte, Vector2i>()
     {
         [(byte)CoTi.NONE]                                      = new (0,0),
@@ -42,8 +43,13 @@ class Platform : Entity
         sprite.Origin = new Vector2f(9, 9);
     }
 
+    /// <summary>
+    /// Checks for neighboring platforms and updates the texture accordingly
+    /// </summary>
+    /// <param name="platforms"></param>
     public void ConnectPlatforms(List<Platform> platforms)
     {
+        // Bitwise OR is used to store multiple connections
         uint connections = (byte)CoTi.NONE;
         
         foreach (var p in platforms)

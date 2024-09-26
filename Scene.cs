@@ -144,11 +144,7 @@ public class Scene
         Spawn(new Score { Position = new Vector2f(360, 18)});
         Spawn(new Coin { Position = new Vector2f(378, 18)});
 
-        // foreach (Platform platform in entities.Where(a => a is Platform))
-        // {
-        //     platform.ConnectPlatforms(entities.Where(a => a is Platform).ToList());
-        // }
-
+        // Connect platform textures
         foreach (Platform platform in entities.OfType<Platform>())
         {
             platform.ConnectPlatforms(entities.OfType<Platform>().ToList());
