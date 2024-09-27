@@ -27,6 +27,7 @@ class Hero : Entity
     {
         verticalSpeed += GRAVITYFORCE * deltaTime;
         animationBuffer += deltaTime;
+        //walking animation
         if ((animationBuffer > KEYFRAME_THRESHOLD) && 
             (isGrounded) &&
             (
@@ -61,11 +62,11 @@ class Hero : Entity
         }
         isGrounded = false;
         Vector2f velocity = new Vector2f(0, verticalSpeed * deltaTime);
-        if (scene.TryMove(this, velocity))
+        if (scene.TryMove(this, velocity))// Hero collided with solid entity
         {
-            if (verticalSpeed > 0.0f)
+            if (verticalSpeed > 0.0f) 
             {
-                isGrounded = true; //hero is standing on something
+                isGrounded = true; 
                 verticalSpeed = 0.0f;
                 if (landed) 
                 {

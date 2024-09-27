@@ -47,9 +47,8 @@ public class Scene
             if (Collision.RectangleRectangle(boundsA, boundsB, out Collision.Hit hit))
             {
                 entity.Position += hit.Normal * hit.Overlap;
-                i = -1; //check everything onve again
+                i = -1; //check everything once again
                 collided = true;
-                //Todo: resolve collision using "hit variable (31)
             }
         }
         return collided;
@@ -94,7 +93,7 @@ public class Scene
             
             switch (words[0])
             {
-                case "w":
+                case "w"://Wall
                 {
                     int posX;
                     int posY;
@@ -103,7 +102,7 @@ public class Scene
                     Spawn(new Platform { Position = new Vector2f(posX, posY) });
                     break;
                 }
-                case "d":
+                case "d"://Door
                 {
                     int posX;
                     int posY;
@@ -112,7 +111,7 @@ public class Scene
                     Spawn(new Door { Position = new Vector2f(posX, posY), NextRoom = words[3]});
                     break;
                 }
-                case "k":
+                case "k"://Key
                 {
                     int posX;
                     int posY;
@@ -121,7 +120,7 @@ public class Scene
                     Spawn(new Key { Position = new Vector2f(posX, posY) });
                     break;
                 }
-                case "h":
+                case "h"://Hero
                 {
                     int posX;
                     int posY;
@@ -130,7 +129,7 @@ public class Scene
                     Spawn(new Hero { Position = new Vector2f(posX, posY) });
                     break;
                 }
-                case "c":
+                case "c"://Coin
                 {
                     int posX;
                     int posY;

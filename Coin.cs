@@ -15,7 +15,6 @@ class Coin : Entity
     }
     public override void Update(Scene scene, float deltaTime)
     {
-        //Switch for sprite change for coin.
         animationBuffer += deltaTime;
         if (animationBuffer > KEYFRAME_THRESHOLD) 
         {
@@ -24,17 +23,16 @@ class Coin : Entity
             if (keyframe) sprite.TextureRect = new IntRect(216, 126, 18, 18);
             else sprite.TextureRect = new IntRect(198, 126, 18, 18);
         }
-        //Coin dissapear on pickup and increase score
         if (scene.FindByType<Hero>(out Hero hero))
         {
             if (Collision.RectangleRectangle(Bounds, hero.Bounds, out _))
             {
-                Dead = true;
+                //Coin dissapear on pickup and increase score
+                Dead = true; 
                 if (scene.FindByType<Score>(out Score score)) score.IncreaseScore();
             }
         }
     }
-    //changes coin hitbox to be more accurate.
     public override FloatRect Bounds
     { get 
         {
