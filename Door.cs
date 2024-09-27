@@ -16,6 +16,7 @@ class Door : Entity
 
     public override void Update(Scene scene, float deltaTime)
     {
+        //check for hero position and if key is picked up(unlocked).
         if (unlocked && scene.FindByType<Hero>(out Hero hero))
         {
             if (Collision.RectangleRectangle(Bounds, hero.Bounds, out _))

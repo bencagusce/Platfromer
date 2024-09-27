@@ -17,7 +17,6 @@ class Program
         {
             window.Closed += (o, e) => window.Close();
             
-            // TODO: Initialize
             Clock clock = new Clock();
             Scene scene = new Scene();
             scene.Spawn(new Background());
@@ -33,11 +32,9 @@ class Program
                 window.DispatchEvents();
                 float deltaTime = clock.Restart().AsSeconds();
                 if (deltaTime > 0.1f) deltaTime = 0.1f;
-                // TODO: Updates
                 scene.UpdateAll(deltaTime);
                 
                 window.Clear();
-                // TODO: Drawing
                 scene.RenderAll(window);
                 window.Display();
             }
