@@ -16,7 +16,8 @@ class Program
         using (var window = new RenderWindow(new VideoMode(800, 600), "platformer"))
         {
             window.Closed += (o, e) => window.Close();
-            
+
+            // Initialization   
             Clock clock = new Clock();
             Scene scene = new Scene();
             scene.Spawn(new Background());
@@ -29,11 +30,13 @@ class Program
             
             while (window.IsOpen)
             {
+                // Update
                 window.DispatchEvents();
                 float deltaTime = clock.Restart().AsSeconds();
                 if (deltaTime > 0.1f) deltaTime = 0.1f;
                 scene.UpdateAll(deltaTime);
                 
+                // Render
                 window.Clear();
                 scene.RenderAll(window);
                 window.Display();
